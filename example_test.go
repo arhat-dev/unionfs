@@ -20,7 +20,7 @@ var (
 func ExampleUnionFS() {
 	ufs := unionfs.New()
 	ufs.Map("/go/arhat.dev/unionfs/trie", "trie", sampleEmbedFS)
-	ufs.Map("/", "/some/rootfs", os.DirFS("/some/rootfs"))
+	ufs.Map("/", "/some/rootfs", sampleOSFS)
 
 	f, err := ufs.Open("/go/arhat.dev/unionfs/trie/trie.go")
 	if err != nil {
