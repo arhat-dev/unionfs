@@ -28,8 +28,8 @@ jobs:
       fail-fast: false
       matrix:
         go:
-        - 1.15.x
         - 1.16.x
+        - 1.17.x
         os:
         - macos-latest
         - windows-latest
