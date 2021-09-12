@@ -1,4 +1,4 @@
-module arhat.dev/template-library-go
+module arhat.dev/unionfs
 
 go 1.15
 

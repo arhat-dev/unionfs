@@ -1,6 +1,7 @@
+//go:build gofuzz
 // +build gofuzz
 
-package templatelibrarygo
+package unionfs
 
 import (
 	"bytes"
