@@ -26,9 +26,9 @@ type UnionFS struct {
 	t *trie.Trie
 }
 
-// Remap existing vfs with new path prefix inside ufs, old prefix is required to access
-// actual file data
-func (ufs *UnionFS) Remap(newPrefix, oldPrefix string, vfs fs.FS) {
+// Map existing vfs with new path prefix inside the ufs, old prefix is required to access
+// actual vfs data
+func (ufs *UnionFS) Map(newPrefix, oldPrefix string, vfs fs.FS) {
 	_ = ufs.t.Add(newPrefix, &fsEntry{
 		newPrefix: newPrefix,
 		oldPrefix: oldPrefix,

@@ -36,13 +36,13 @@ func TestUnionFS_Open(t *testing.T) {
 	}
 
 	rmfs := New()
-	rmfs.Remap("foo", "bar", fstest.MapFS{
+	rmfs.Map("foo", "bar", fstest.MapFS{
 		"bar": &fstest.MapFile{
 			Data: []byte("bar"),
 		},
 	})
 
-	rmfs.Remap("some/data", "some/data", fstest.MapFS{
+	rmfs.Map("some/data", "some/data", fstest.MapFS{
 		"data": &fstest.MapFile{
 			Data: []byte("data"),
 		},
