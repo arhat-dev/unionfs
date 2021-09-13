@@ -54,6 +54,9 @@ golang:test:
     output_dir: build/test-profile
     coverage:
       enabled: true
+      output@template: |-
+        coverage-{{- .Env.MATRIX_PKG | strings.KebabCase -}}.out
+
   json_output_file@template: |-
     {{ .Env.TEST_PROFILE_DIR }}/result-
     {{- .Env.MATRIX_PKG | strings.KebabCase -}}.json
