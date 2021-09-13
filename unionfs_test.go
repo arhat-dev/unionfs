@@ -18,7 +18,7 @@ func TestUnionFS_Open(t *testing.T) {
 		expectErr    error
 	}{
 		{
-			name:         "File Exists",
+			name:         "File Exists Directly",
 			path:         "foo",
 			expectedName: "foo",
 		},
@@ -26,6 +26,18 @@ func TestUnionFS_Open(t *testing.T) {
 			name:      "File Not Exists",
 			path:      "bar",
 			expectErr: fs.ErrNotExist,
+		},
+		{
+			name:         "Dir Exists In Underlay FS",
+			path:         "foo/dir",
+			expectedName: "foo/dir",
+			expectDir:    true,
+		},
+		{
+			name:         "File Exists In Underlay FS",
+			path:         "foo/dir/foo",
+			expectedName: "foo/dir/foo",
+			expectDir:    false,
 		},
 		{
 			name:         "Path Is Dir",
@@ -39,6 +51,9 @@ func TestUnionFS_Open(t *testing.T) {
 	rmfs.Map("foo", "bar", fstest.MapFS{
 		"bar": &fstest.MapFile{
 			Data: []byte("bar"),
+		},
+		"bar/dir/foo": &fstest.MapFile{
+			Data: []byte("foo"),
 		},
 	})
 
